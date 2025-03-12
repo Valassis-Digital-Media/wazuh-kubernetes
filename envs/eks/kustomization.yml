@@ -7,6 +7,9 @@
 
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+
+namespace: wazuh
+
 resources:
 - ../../wazuh
 patches:
@@ -15,3 +18,12 @@ patches:
 - path: dashboard-resources.yaml
 - path: wazuh-master-resources.yaml
 - path: wazuh-worker-resources.yaml
+- path: arch.yaml
+
+configMapGenerator:
+  - name: wazuh-conf
+    behavior: replace
+    namespace: wazuh
+    files:
+      - wazuh_conf/master.conf
+#      - wazuh_conf/worker.conf
