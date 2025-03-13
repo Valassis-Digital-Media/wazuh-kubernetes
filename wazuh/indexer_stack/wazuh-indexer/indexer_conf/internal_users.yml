@@ -20,6 +20,9 @@ admin:
 kibanaserver:
   hash: "$2a$12$4AcgAt3xwOWadA5s5blL6ev39OXDNhmOesEoo33eZtrq2N0YrU3H."
   reserved: true
+  backend_roles:
+    - "admin"
+    - "logstash"
   description: "Demo kibanaserver user"
 
 kibanaro:
