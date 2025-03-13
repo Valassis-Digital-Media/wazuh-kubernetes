@@ -12,6 +12,7 @@ namespace: wazuh
 
 resources:
 - ../eks
+- ingress.yaml
 patches:
 - path: arch.yaml
 - path: dashboard-cred-secret.yaml
