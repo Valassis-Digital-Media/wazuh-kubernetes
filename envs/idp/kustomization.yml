@@ -25,3 +25,12 @@ configMapGenerator:
     files:
       - wazuh_conf/master.conf
       - wazuh_conf/worker.conf
+  - name: wazuh-filebeat
+    namespace: wazuh
+    files:
+     - wazuh_conf/filebeat.yml
+  - name: wazuh-local-internal-options
+    namespace: wazuh
+    files:
+     - wazuh_conf/local_internal_options.conf
+

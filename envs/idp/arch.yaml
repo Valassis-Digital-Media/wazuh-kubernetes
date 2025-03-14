@@ -42,6 +42,24 @@ spec:
       serviceAccountName: wazuh
       nodeSelector:
         kubernetes.io/arch: amd64
+      volumes:
+        - name: wazuh-filebeat
+          configMap:
+            name: wazuh-filebeat
+        - name: wazuh-local-internal-options
+          configMap:
+            name: wazuh-local-internal-options
+      containers:
+        - name: wazuh-manager
+          volumeMounts:
+            - name: wazuh-filebeat
+              mountPath: /etc/filebeat/filebeat.yml
+              subPath: filebeat.yml
+              readOnly: true
+            - name: wazuh-local-internal-options
+              mountPath: /var/ossec/etc/local_internal_options.conf
+              subPath: local_internal_options.conf
+              readOnly: true
 
 ---
 apiVersion: apps/v1
@@ -55,3 +73,14 @@ spec:
       serviceAccountName: wazuh
       nodeSelector:
         kubernetes.io/arch: amd64
+      volumes:
+        - name: wazuh-filebeat
+          configMap:
+            name: wazuh-filebeat
+      containers:
+        - name: wazuh-manager
+          volumeMounts:
+            - name: wazuh-filebeat
+              mountPath: /etc/filebeat/filebeat.yml
+              subPath: filebeat.yml
+              readOnly: true
