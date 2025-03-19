@@ -60,6 +60,10 @@ spec:
               mountPath: /var/ossec/etc/local_internal_options.conf
               subPath: local_internal_options.conf
               readOnly: true
+#            - name: wazuh-authd-pass
+#              mountPath: /var/ossec/etc/authd.pass
+#              subPath: authd.pass
+#              readOnly: true
 
 ---
 apiVersion: apps/v1
@@ -68,6 +72,7 @@ metadata:
   name: wazuh-manager-worker
   namespace: wazuh
 spec:
+  replicas: 0
   template:
     spec:
       serviceAccountName: wazuh
@@ -84,3 +89,12 @@ spec:
               mountPath: /etc/filebeat/filebeat.yml
               subPath: filebeat.yml
               readOnly: true
+
+#---
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: wazuh-workers
+#  namespace: wazuh
+#  annotations:
+#    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp
