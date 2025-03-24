@@ -49,6 +49,9 @@ spec:
         - name: wazuh-local-internal-options
           configMap:
             name: wazuh-local-internal-options
+        - name: wazuh-ecr-rules
+          configMap:
+            name: wazuh-ecr-rules
       containers:
         - name: wazuh-manager
           volumeMounts:
@@ -59,6 +62,10 @@ spec:
             - name: wazuh-local-internal-options
               mountPath: /var/ossec/etc/local_internal_options.conf
               subPath: local_internal_options.conf
+              readOnly: true
+            - name: wazuh-ecr-rules
+              mountPath: /var/ossec/etc/rules/ecr_rules.xml
+              subPath: ecr_rules.xml
               readOnly: true
 #            - name: wazuh-authd-pass
 #              mountPath: /var/ossec/etc/authd.pass

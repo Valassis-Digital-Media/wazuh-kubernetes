@@ -33,4 +33,8 @@ configMapGenerator:
     namespace: wazuh
     files:
      - wazuh_conf/local_internal_options.conf
+  - name: wazuh-ecr-rules
+    namespace: wazuh
+    files:
+     - wazuh_conf/ecr_rules.xml
 
