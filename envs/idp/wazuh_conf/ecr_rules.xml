@@ -34,12 +34,14 @@
         <if_sid>100050</if_sid>
         <field name="severity" type="pcre2">CRITICAL</field>
         <description>A vulnerable package with a $(severity) severity and $(name) is detected. Visit $(uri) to learn about this vulnerability.</description>
+        <options>alert_by_email</options>
     </rule>
     <!-- This rule detects a high severity vulnerable container image. -->
     <rule id="100055" level="12">
         <if_sid>100050</if_sid>
         <field name="severity" type="pcre2">HIGH</field>
         <description>A vulnerable package with a $(severity) severity and $(name) is detected. Visit $(uri) to learn about this vulnerability.</description>
+        <options>alert_by_email</options>
     </rule>
 </group>
 
