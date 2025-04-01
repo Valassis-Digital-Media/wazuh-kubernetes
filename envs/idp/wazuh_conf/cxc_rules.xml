@@ -11,6 +11,7 @@
         <field name="severity" type="pcre2">INFO</field>
         <field name="message" type="pcre2">Create session: .+</field>
         <description>A CXC session was created</description>
+        <options>alert_by_email</options>
     </rule>
     <!-- This rule detects a destroyed session -->
     <rule id="100152" level="3">
@@ -18,5 +19,6 @@
         <field name="severity" type="pcre2">INFO</field>
         <field name="message" type="pcre2">Session destroyed: .+</field>
         <description>A CXC session was destroyed</description>
+        <options>alert_by_email</options>
     </rule>
 </group>
