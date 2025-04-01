@@ -52,6 +52,12 @@ spec:
         - name: wazuh-ecr-rules
           configMap:
             name: wazuh-ecr-rules
+        - name: wazuh-cxc-rules
+          configMap:
+            name: wazuh-cxc-rules
+        - name: wazuh-cxc-decoder
+          configMap:
+            name: wazuh-cxc-decoder
       containers:
         - name: wazuh-manager
           volumeMounts:
