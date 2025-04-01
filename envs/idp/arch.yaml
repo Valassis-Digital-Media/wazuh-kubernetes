@@ -67,6 +67,14 @@ spec:
               mountPath: /var/ossec/etc/rules/ecr_rules.xml
               subPath: ecr_rules.xml
               readOnly: true
+            - name: wazuh-cxc-rules
+              mountPath: /var/ossec/etc/rules/cxc_rules.xml
+              subPath: cxc_rules.xml
+              readOnly: true
+            - name: wazuh-cxc-decoder
+              mountPath: /var/ossec/etc/decoders/couponxchange.xml
+              subPath: decoders/couponxchange.xml
+              readOnly: true
 #            - name: wazuh-authd-pass
 #              mountPath: /var/ossec/etc/authd.pass
 #              subPath: authd.pass

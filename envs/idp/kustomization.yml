@@ -37,4 +37,12 @@ configMapGenerator:
     namespace: wazuh
     files:
      - wazuh_conf/ecr_rules.xml
+  - name: wazuh-cxc-rules
+    namespace: wazuh
+    files:
+     - wazuh_conf/cxc_rules.xml
+  - name: wazuh-cxc-decoder
+    namespace: wazuh
+    files:
+     - wazuh_conf/decoders/couponxchange.xml
 
