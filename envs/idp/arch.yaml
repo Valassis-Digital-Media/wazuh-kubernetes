@@ -73,7 +73,7 @@ spec:
               readOnly: true
             - name: wazuh-cxc-decoder
               mountPath: /var/ossec/etc/decoders/couponxchange.xml
-              subPath: decoders/couponxchange.xml
+              subPath: couponxchange.xml
               readOnly: true
 #            - name: wazuh-authd-pass
 #              mountPath: /var/ossec/etc/authd.pass
