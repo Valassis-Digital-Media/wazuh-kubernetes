@@ -1,12 +1,13 @@
 <!--
 2025-04-01 11:55:49,027 INFO de.valassis.util.listener.SessionListener - ------ Session destroyed: DA49C9292D87C7F4AFEEDD0F7405C212
+2025-04-02 07:24:10,605 INFO  de.valassis.util.listener.SessionListener - ------ Create session: E1C363B6B7DA1883025AD7BBE54097D7
 -->
-<decoder name="couponxchange">
-  <prematch>\.+ de.valassis.\.*</prematch>
-</decoder>
+<!-- <decoder name="couponxchange"> -->
+<!--   <prematch>\.+\s+de.valassis.\.+</prematch> -->
+<!-- </decoder> -->
 
-<decoder name="couponxchange-session">
-  <parent>couponxchange</parent>
-  <regex>\d+-\d+-\d+ \d+:\d+:\d+,\d+ (\w+) (\S+) - \.* (\.+)</regex>
-  <order>severity, component, message</order>
+<decoder name="couponxchange">
+  <!-- <parent>couponxchange</parent> -->
+  <regex>\d+-\d+-\d+ \d+:\d+:\d+,\d+\s+(\w+)\s+(\S+)\s+-\s+\.*\s+(\.+)</regex>
+  <order>cxc.severity, cxc.component, cxc.message</order>
 </decoder>
