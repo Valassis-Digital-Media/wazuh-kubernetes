@@ -1,0 +1,143 @@
+{
+   "name": "couponxchange",
+   "type": "monitor",
+   "monitor_type": "query_level_monitor",
+   "enabled": true,
+   "schedule": {
+      "period": {
+         "unit": "MINUTES",
+         "interval": 1
+      }
+   },
+   "inputs": [
+      {
+         "search": {
+            "indices": [
+               "wazuh-alerts-*"
+            ],
+            "query": {
+               "size": 0,
+               "aggregations": {},
+               "query": {
+                  "bool": {
+                     "filter": [
+                        {
+                           "range": {
+                              "@timestamp": {
+                                 "gte": "{{period_end}}||-1h",
+                                 "lte": "{{period_end}}",
+                                 "format": "epoch_millis"
+                              }
+                           }
+                        },
+                        {
+                           "term": {
+                              "rule.groups": "couponxchange"
+                           }
+                        },
+                        {
+                           "range": {
+                              "rule.level": {
+                                 "gte": 2
+                              }
+                           }
+                        }
+                     ]
+                  }
+               }
+            }
+         }
+      }
+   ],
+   "triggers": [
+      {
+         "query_level_trigger": {
+            "id": "iLzC9pUB7WzTbBNV8bEb",
+            "name": "mail",
+            "severity": "1",
+            "condition": {
+               "script": {
+                  "source": "ctx.results[0].hits.total.value > 500",
+                  "lang": "painless"
+               }
+            },
+            "actions": [
+               {
+                  "id": "notification406300",
+                  "name": "mail",
+                  "destination_id": "fmEnqpUB7e-RxvOECKYz",
+                  "message_template": {
+                     "source": "Monitor {{ctx.monitor.name}} just entered alert status. Please investigate the issue.\n  - Trigger: {{ctx.trigger.name}}\n  - Severity: {{ctx.trigger.severity}}\n  - Period start: {{ctx.periodStart}}\n  - Period end: {{ctx.periodEnd}}",
+                     "lang": "mustache"
+                  },
+                  "throttle_enabled": true,
+                  "subject_template": {
+                     "source": "Alerting Notification action CXC",
+                     "lang": "mustache"
+                  },
+                  "throttle": {
+                     "value": 240,
+                     "unit": "MINUTES"
+                  }
+               }
+            ]
+         }
+      }
+   ],
+   "ui_metadata": {
+      "schedule": {
+         "timezone": null,
+         "frequency": "interval",
+         "period": {
+            "unit": "MINUTES",
+            "interval": 1
+         },
+         "daily": 0,
+         "weekly": {
+            "tue": false,
+            "wed": false,
+            "thur": false,
+            "sat": false,
+            "fri": false,
+            "mon": false,
+            "sun": false
+         },
+         "monthly": {
+            "type": "day",
+            "day": 1
+         },
+         "cronExpression": "0 */1 * * *"
+      },
+      "monitor_type": "query_level_monitor",
+      "search": {
+         "searchType": "graph",
+         "timeField": "@timestamp",
+         "aggregations": [],
+         "groupBy": [],
+         "bucketValue": 1,
+         "bucketUnitOfTime": "h",
+         "filters": [
+            {
+               "fieldName": [
+                  {
+                     "label": "rule.groups",
+                     "type": "keyword"
+                  }
+               ],
+               "fieldValue": "couponxchange",
+               "operator": "is"
+            },
+            {
+               "fieldName": [
+                  {
+                     "label": "rule.level",
+                     "type": "number"
+                  }
+               ],
+               "fieldValue": 2,
+               "operator": "is_greater_equal"
+            }
+         ]
+      }
+   }
+}
