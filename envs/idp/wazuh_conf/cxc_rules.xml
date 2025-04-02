@@ -7,18 +7,18 @@
     <!-- This rule detects a created session -->
     <rule id="100151" level="3">
         <if_sid>100150</if_sid>
-        <field name="data.cxc.component" type="pcre2">de.valassis.util.listener.SessionListener</field>
-        <!-- <field name="data.cxc.severity" type="pcre2">INFO</field> -->
-        <!-- <field name="data.cxc.message" type="pcre2">Create session: .+</field> -->
+        <field name="component" type="pcre2">de.valassis.util.listener.SessionListener</field>
+        <field name="severity" type="pcre2">INFO</field>
+        <field name="message_text" type="pcre2">Create session: .+</field>
         <description>A CXC session was created</description>
         <options>alert_by_email</options>
     </rule>
     <!-- This rule detects a destroyed session -->
     <rule id="100152" level="3">
         <if_sid>100150</if_sid>
-        <field name="data.cxc.component" type="pcre2">de.valassis.util.listener.SessionListener</field>
-        <!-- <field name="data.cxc.severity" type="pcre2">INFO</field> -->
-        <!-- <field name="data.cxc.message" type="pcre2">Session destroyed: .+</field> -->
+        <field name="component" type="pcre2">de.valassis.util.listener.SessionListener</field>
+        <field name="severity" type="pcre2">INFO</field>
+        <field name="message_text" type="pcre2">Session destroyed: .+</field>
         <description>A CXC session was destroyed</description>
         <options>alert_by_email</options>
     </rule>

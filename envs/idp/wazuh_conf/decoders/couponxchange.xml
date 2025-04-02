@@ -9,5 +9,5 @@
 <decoder name="couponxchange-session">
   <parent>couponxchange</parent>
   <regex>\d+-\d+-\d+ \d+:\d+:\d+,\d+\s+(\w+)\s+(\S+)\s+-\s+\.*\s+(\.+)</regex>
-  <order>cxc.severity, cxc.component, cxc.message</order>
+  <order>severity, component, message_text</order>
 </decoder>
