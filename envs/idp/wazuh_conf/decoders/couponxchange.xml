@@ -8,6 +8,7 @@
 
 <decoder name="couponxchange">
   <!-- <parent>couponxchange</parent> -->
+  <prematch>\.+\s+de.valassis.\.+</prematch>
   <regex>\d+-\d+-\d+ \d+:\d+:\d+,\d+\s+(\w+)\s+(\S+)\s+-\s+\.*\s+(\.+)</regex>
   <order>cxc.severity, cxc.component, cxc.message</order>
 </decoder>
