@@ -6,6 +6,7 @@
 </decoder>
 
 <decoder name="couponxchange1">
+  <parent>couponxchange</parent>
   <regex>(.+)</regex>
   <order>message</order>
 </decoder>
